@@ -1,0 +1,400 @@
+---
+---
+// ---------------------------------------------
+// App Color & Typography Tokens (Adapted)
+// ---------------------------------------------
+$bg-app:      #7B68A6;
+$paper:       #ffffff;
+$paper-alt:   #f8fafc; 
+$ink:         #0f172a;
+$ink-soft:    #64748b;
+$accent-title: #7ED8D1;
+$hairline:    #e2e8f0;
+
+$body:        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$mono:        "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+// ---------------------------------------------
+// Reset & Base
+// ---------------------------------------------
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: $bg-app;
+  color: $ink;
+  font-family: $body;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+h1, h2, h3 {
+  font-family: $body;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: $ink;
+}
+
+h1 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.15rem; margin-bottom: 8px; }
+
+p { margin: 0 0 16px; color: $ink; }
+.muted { color: $ink-soft; }
+
+a { color: #2563eb; text-decoration: none; }
+
+.divider {
+  border: none;
+  border-top: 1px solid $hairline;
+  margin: 0;
+}
+
+// ---------------------------------------------
+// Signature element: stamp tags
+// ---------------------------------------------
+.stamp {
+  display: inline-block;
+  font-family: $mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
+  outline: 1px solid #7c3aed;
+  outline-offset: 2px;
+  padding: 5px 10px;
+  transform: rotate(-1deg);
+  margin-bottom: 20px;
+
+  &--muted {
+    color: $ink-soft;
+    border-color: $hairline;
+    outline-color: $hairline;
+  }
+}
+
+// ---------------------------------------------
+// Header
+// ---------------------------------------------
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(123, 104, 166, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.wordmark {
+  font-family: $body;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: $accent-title !important;
+  text-decoration: none;
+  text-shadow: -1px 1px 0px #333, -2px 2px 0px #333;
+
+  &--small { margin: 0 0 4px; font-size: 1.05rem; text-shadow: none; }
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  a:hover { color: $accent-title; }
+
+  &__cta {
+    color: #000000 !important;
+    background: #ffbe0b;
+    border: 2px solid #000000;
+    padding: 6px 12px;
+    font-size: 0.85rem !important;
+    border-radius: 4px;
+  }
+}
+
+// ---------------------------------------------
+// Hero
+// ---------------------------------------------
+.hero { padding: 88px 0 64px; background: #ffffff; border-radius: 12px; margin: 20px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+.hero__row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1 {
+  color: #0f172a;
+}
+
+.hero__lede {
+  font-size: 1.1rem;
+  color: $ink-soft;
+  max-width: 44ch;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0 14px;
+}
+
+// ---------------------------------------------
+// App Neo-Brutalist Buttons Integration
+// ---------------------------------------------
+.button {
+  font-family: 'Impact', 'Arial Black', sans-serif !important; 
+  text-transform: none;
+  font-weight: 900 !important; 
+  font-size: 16px !important;
+  letter-spacing: 0.05em;
+  padding: 12px 20px !important; 
+  cursor: pointer; 
+  text-align: center; 
+  text-decoration: none;
+  border: 3px solid #000000 !important;
+  border-radius: 4px 11px 4px 11px / 11px 4px 11px 4px !important;
+  box-shadow: -6px 6px 0px 0px #000000 !important;
+  color: #000000 !important; 
+  position: relative;
+  transition: all 0.1s ease-in-out;
+  display: inline-block;
+
+  &--primary, &.button--load { background: #ffbe0b !important; }
+  &--secondary, &.button--local { background: #e1dcbe !important; }
+  &--sync { background: #4cc9f0 !important; }
+
+  &--on-dark {
+    background: #ffbe0b !important;
+    color: #000000 !important;
+  }
+  &--outline {
+    background: #e1dcbe !important;
+    color: #000000 !important;
+  }
+
+  &:hover { 
+    transform: translate(-2px, 2px); 
+    box-shadow: -4px 4px 0px 0px #000000 !important; 
+  }
+  &:active { 
+    transform: translate(-6px, 6px); 
+    box-shadow: 0px 0px 0px 0px #000000 !important; 
+  }
+}
+
+.fine-print {
+  font-family: $mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: $ink-soft;
+  margin: 0;
+}
+
+// ---------------------------------------------
+// Hero mock window (CSS-only app preview)
+// ---------------------------------------------
+.mock-window {
+  background: #F7F6F2;
+  border: 2px solid #000000;
+  box-shadow: -8px 8px 0px 0px rgba(0,0,0,0.8);
+  transform: rotate(1deg);
+  border-radius: 6px;
+}
+
+.mock-window__bar {
+  display: flex;
+  gap: 6px;
+  padding: 12px 14px;
+  border-bottom: 1px solid $hairline;
+
+  span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #cbd5e1;
+  }
+}
+
+.mock-window__body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mock-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid $hairline;
+  background: #fff;
+
+  &--locked {
+    border-color: #7c3aed;
+    background: #f5f3ff;
+  }
+
+  &__icon { font-size: 1.1rem; }
+  &__lines { flex: 1; }
+}
+
+.mock-line {
+  height: 8px;
+  background: $hairline;
+  margin-bottom: 6px;
+
+  &--title { width: 70%; }
+  &--sub { width: 45%; margin-bottom: 0; }
+}
+
+// ---------------------------------------------
+// Content Section Cards (Features & How It Works)
+// ---------------------------------------------
+.features, .how {
+  background: #ffffff;
+  padding: 60px 0;
+  margin: 20px auto;
+  border-radius: 12px;
+  max-width: 1080px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.eyebrow {
+  font-family: $mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $ink-soft;
+  margin-bottom: 28px;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 48px;
+  padding: 0 32px;
+}
+
+.feature-card {
+  padding: 20px;
+  border: 1px solid $hairline;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+.feature-card p { color: $ink-soft; }
+
+.how__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 0 32px;
+}
+
+.how-step {
+  padding: 20px;
+  border: 1px solid $hairline;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.how-step__index {
+  display: block;
+  font-family: $mono;
+  color: #7c3aed;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.how-step p { color: $ink-soft; }
+
+// ---------------------------------------------
+// CTA band
+// ---------------------------------------------
+.cta {
+  background: #ffffff;
+  color: $ink;
+  padding: 64px 0;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.cta h2, .cta p { color: $ink; }
+
+.cta__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 0 32px;
+}
+
+// ---------------------------------------------
+// Footer
+// ---------------------------------------------
+.site-footer { 
+  padding: 30px 0 50px; 
+  color: #ffffff;
+}
+
+.site-footer .muted {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-footer__contact a {
+  font-family: $mono;
+  font-size: 0.9rem;
+  color: $accent-title;
+}
+
+// ---------------------------------------------
+// Responsive Queries
+// ---------------------------------------------
+@media (max-width: 860px) {
+  .hero__row { grid-template-columns: 1fr; }
+  .features__grid { grid-template-columns: 1fr; }
+  .how__grid { grid-template-columns: 1fr; }
+  .site-nav { gap: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}
