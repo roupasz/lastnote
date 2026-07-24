@@ -11,7 +11,10 @@
 <body>
   <header class="site-header">
     <div class="wrap site-header__row">
-      <a class="wordmark" href="{{ '/' | relative_url }}">LastNote</a>
+      <a class="wordmark-container" href="{{ '/' | relative_url }}">
+        <span class="wordmark">LastNote</span>
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="LastNote Logo" class="site-logo">
+      </a>
       <nav class="site-nav">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>

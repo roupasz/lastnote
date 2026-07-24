@@ -46,7 +46,7 @@ h1, h2, h3 {
 
 h1 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); }
 h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
-h3 { font-size: 1.15rem; margin-bottom: 8px; }
+h3 { font-size: 1.15rem; margin-bottom: 8px; } // Increased heading sizes
 
 p { margin: 0 0 16px; color: $ink; }
 .muted { color: $ink-soft; }
@@ -84,7 +84,7 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 // ---------------------------------------------
-// Header
+// Header & Nav (Bigger text & Logo integration)
 // ---------------------------------------------
 .site-header {
   position: sticky;
@@ -99,18 +99,31 @@ a { color: #2563eb; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 76px;
+}
+
+.wordmark-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.site-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
 .wordmark {
   font-family: $body;
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.8rem; 
   color: $accent-title !important;
   text-decoration: none;
   text-shadow: -1px 1px 0px #333, -2px 2px 0px #333;
 
-  &--small { margin: 0 0 4px; font-size: 1.05rem; text-shadow: none; }
+  &--small { margin: 0 0 4px; font-size: 1.1rem; text-shadow: none; }
 }
 
 .site-nav {
@@ -121,7 +134,7 @@ a { color: #2563eb; text-decoration: none; }
   a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.95rem; /* Reverted nav text size */
     font-weight: 500;
   }
   a:hover { color: $accent-title; }
@@ -130,14 +143,14 @@ a { color: #2563eb; text-decoration: none; }
     color: #000000 !important;
     background: #ffbe0b;
     border: 2px solid #000000;
-    padding: 6px 12px;
-    font-size: 0.85rem !important;
+    padding: 6px 14px;
+    font-size: 0.85rem !important; /* Reverted download CTA size */
     border-radius: 4px;
   }
 }
 
 // ---------------------------------------------
-// Hero
+// Hero & Logo Image Replacement
 // ---------------------------------------------
 .hero { padding: 88px 0 64px; background: #ffffff; border-radius: 12px; margin: 20px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
@@ -148,12 +161,18 @@ a { color: #2563eb; text-decoration: none; }
   align-items: center;
 }
 
-.hero h1 {
-  color: #0f172a;
+.hero-logo-wrapper {
+  margin-bottom: 16px;
+}
+
+.hero-main-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 90px; // Sized for the logo image replacing the headline text
 }
 
 .hero__lede {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: $ink-soft;
   max-width: 44ch;
 }
@@ -218,61 +237,22 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 // ---------------------------------------------
-// Hero mock window (CSS-only app preview)
+// App Screenshot Preview Frame (Replaces CSS mock window)
 // ---------------------------------------------
-.mock-window {
+.app-screenshot-frame {
   background: #F7F6F2;
   border: 2px solid #000000;
   box-shadow: -8px 8px 0px 0px rgba(0,0,0,0.8);
   transform: rotate(1deg);
-  border-radius: 6px;
-}
-
-.mock-window__bar {
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
-  gap: 6px;
-  padding: 12px 14px;
-  border-bottom: 1px solid $hairline;
-
-  span {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #cbd5e1;
-  }
 }
 
-.mock-window__body {
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.mock-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px;
-  border: 1px solid $hairline;
-  background: #fff;
-
-  &--locked {
-    border-color: #7c3aed;
-    background: #f5f3ff;
-  }
-
-  &__icon { font-size: 1.1rem; }
-  &__lines { flex: 1; }
-}
-
-.mock-line {
-  height: 8px;
-  background: $hairline;
-  margin-bottom: 6px;
-
-  &--title { width: 70%; }
-  &--sub { width: 45%; margin-bottom: 0; }
+.app-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 // ---------------------------------------------
@@ -289,7 +269,7 @@ a { color: #2563eb; text-decoration: none; }
 
 .eyebrow {
   font-family: $mono;
-  font-size: 0.78rem;
+  font-size: 0.78rem; 
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $ink-soft;
@@ -304,7 +284,7 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 .feature-card {
-  padding: 20px;
+  padding: 24px;
   border: 1px solid $hairline;
   border-radius: 8px;
   background: #f8fafc;
@@ -319,7 +299,7 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 .how-step {
-  padding: 20px;
+  padding: 24px;
   border: 1px solid $hairline;
   border-radius: 8px;
   background: #f8fafc;
@@ -329,7 +309,7 @@ a { color: #2563eb; text-decoration: none; }
   display: block;
   font-family: $mono;
   color: #7c3aed;
-  font-size: 0.85rem;
+  font-size: 0.85rem; 
   letter-spacing: 0.08em;
   margin-bottom: 10px;
 }
@@ -380,7 +360,7 @@ a { color: #2563eb; text-decoration: none; }
 
 .site-footer__contact a {
   font-family: $mono;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: $accent-title;
 }
 

@@ -6,47 +6,24 @@ layout: default
   <div class="wrap hero__row">
     <div class="hero__text">
       <span class="stamp">Desktop app</span>
-      <h1>Keep important information safe — and ready for the right moment.</h1>
+      <div class="hero-logo-wrapper">
+        <img src="{{ '/assets/images/appicon.png' | relative_url }}" alt="LastNote" class="hero-main-logo">
+      </div>
       <p class="hero__lede">
         LastNote holds the things that matter most — accounts, instructions,
         documents, final wishes — locked away until the moment someone
         actually needs them.
       </p>
       <div class="button-row">
-        <a class="button button--primary" href="{{ site.download.mac_url }}">Download for Mac</a>
-        <a class="button button--secondary" href="{{ site.download.windows_url }}">Download for Windows</a>
+        <a class="button button--primary button--load" href="{{ site.download.mac_url }}">Download for Mac</a>
+        <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Download for Windows</a>
       </div>
       <p class="fine-print">Version {{ site.download.version }} · {{ site.download.mac_requirement }} · {{ site.download.windows_requirement }}</p>
     </div>
 
     <div class="hero__art" aria-hidden="true">
-      <div class="mock-window">
-        <div class="mock-window__bar">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="mock-window__body">
-          <div class="mock-row mock-row--locked">
-            <div class="mock-row__icon">&#128274;</div>
-            <div class="mock-row__lines">
-              <div class="mock-line mock-line--title"></div>
-              <div class="mock-line mock-line--sub"></div>
-            </div>
-          </div>
-          <div class="mock-row">
-            <div class="mock-row__icon">&#128196;</div>
-            <div class="mock-row__lines">
-              <div class="mock-line mock-line--title"></div>
-              <div class="mock-line mock-line--sub"></div>
-            </div>
-          </div>
-          <div class="mock-row">
-            <div class="mock-row__icon">&#128273;</div>
-            <div class="mock-row__lines">
-              <div class="mock-line mock-line--title"></div>
-              <div class="mock-line mock-line--sub"></div>
-            </div>
-          </div>
-        </div>
+      <div class="app-screenshot-frame">
+        <img src="{{ '/assets/images/keyholder_decrypt_vault.gif' | relative_url }}" alt="LastNote App Interface" class="app-screenshot">
       </div>
     </div>
   </div>
@@ -121,8 +98,8 @@ layout: default
       <p>Free to download. No account, no subscription.</p>
     </div>
     <div class="button-row">
-      <a class="button button--on-dark" href="{{ site.download.mac_url }}">Download for Mac</a>
-      <a class="button button--on-dark button--outline" href="{{ site.download.windows_url }}">Download for Windows</a>
+      <a class="button button--on-dark button--load" href="{{ site.download.mac_url }}">Download for Mac</a>
+      <a class="button button--outline button--local" href="{{ site.download.windows_url }}">Download for Windows</a>
     </div>
   </div>
 </section>
