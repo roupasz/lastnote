@@ -93,6 +93,7 @@ a { color: #2563eb; text-decoration: none; }
   background: rgba(123, 104, 166, 0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: visible !important;
 }
 
 .site-header__row {
@@ -110,9 +111,12 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 .site-logo {
-  height: 36px;
+  height: 90px;
   width: auto;
   object-fit: contain;
+  position: relative;
+  top: 15px;
+  transform: rotate(15deg);
 }
 
 .wordmark {
@@ -162,9 +166,9 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 .hero-main-logo {
-  max-width: 100%;
-  height: auto;
-  max-height: 90px; // Sized for the logo image replacing the headline text
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 180px !important; 
 }
 
 .hero__lede {
