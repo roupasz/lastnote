@@ -15,6 +15,40 @@ $body:        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, 
 $mono:        "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
 // ---------------------------------------------
+// Day / night theme variables
+// Cards (hero/features/how/cta) stay white with dark ink text in both
+// themes, so only the page background, header, footer, and accents need
+// to swap — that's what keeps text readable through the transition.
+// ---------------------------------------------
+:root {
+  --bg-start:      #FCE2EA; // soft pink
+  --bg-end:        #F6C9DC; // slightly deeper pink
+  --header-bg:     rgba(252, 226, 234, 0.85); // matches the pink background
+  --header-border: rgba(15, 23, 42, 0.12);
+  --nav-text:      #{$ink};
+  --toggle-color:  #{$ink};
+  --footer-text:   #{$ink};
+  --footer-muted:  rgba(15, 23, 42, 0.65);
+  --accent:        #{$accent-title};
+}
+
+html[data-theme="night"] {
+  --bg-start:      #7B68A6; // the purple that used to be the fixed header color
+  --bg-end:        #7B68A6; // flat, same purple throughout
+  --header-bg:     rgba(123, 104, 166, 0.92); // that same purple, as the header
+  --header-border: rgba(255, 255, 255, 0.2);
+  --nav-text:      #ffffff;
+  --toggle-color:  #ffffff;
+  --footer-text:   #F1EEFB;
+  --footer-muted:  rgba(241, 238, 251, 0.65);
+  --accent:        #{$accent-title};
+}
+
+html, body {
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+// ---------------------------------------------
 // Reset & Base
 // ---------------------------------------------
 * { box-sizing: border-box; }
@@ -22,12 +56,15 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: $bg-app;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  background-attachment: fixed;
   color: $ink;
   font-family: $body;
   font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+
+  &.modal-open { overflow: hidden; }
 }
 
 .wrap {
@@ -90,9 +127,10 @@ a { color: #2563eb; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(123, 104, 166, 0.92);
+  background: var(--header-bg);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--header-border);
+  transition: background-color 0.6s ease, border-color 0.6s ease;
   overflow: visible !important;
 }
 
@@ -117,6 +155,7 @@ a { color: #2563eb; text-decoration: none; }
   position: relative;
   top: 15px;
   transform: rotate(15deg);
+  z-index: 11; // sit above the sticky header's own stacking context
 }
 
 .wordmark {
@@ -136,10 +175,11 @@ a { color: #2563eb; text-decoration: none; }
   gap: 28px;
 
   a {
-    color: #ffffff;
+    color: var(--nav-text);
     text-decoration: none;
     font-size: 0.95rem; /* Reverted nav text size */
     font-weight: 500;
+    transition: color 0.6s ease;
   }
   a:hover { color: $accent-title; }
 
@@ -152,6 +192,32 @@ a { color: #2563eb; text-decoration: none; }
     border-radius: 4px;
   }
 }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 2px solid var(--toggle-color);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--toggle-color);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: background 0.15s ease, transform 0.15s ease, color 0.6s ease, border-color 0.6s ease;
+
+  &:hover { background: rgba(125, 104, 166, 0.15); }
+  &:active { transform: scale(0.92); }
+
+  &__icon { display: none; }
+}
+
+// sun shows by day, moon shows by night
+html[data-theme="day"] .theme-toggle__icon--sun { display: inline; }
+html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
 
 // ---------------------------------------------
 // Hero & Logo Image Replacement
@@ -168,7 +234,7 @@ a { color: #2563eb; text-decoration: none; }
 .hero-main-logo {
   max-width: 100% !important;
   height: auto !important;
-  max-height: 180px !important; 
+  max-height: 180px !important;
 }
 
 .hero__lede {
@@ -182,6 +248,11 @@ a { color: #2563eb; text-decoration: none; }
   flex-wrap: wrap;
   gap: 16px;
   margin: 24px 0 14px;
+
+  &--center {
+    justify-content: center;
+    margin: 20px 0 0;
+  }
 }
 
 // ---------------------------------------------
@@ -208,6 +279,15 @@ a { color: #2563eb; text-decoration: none; }
   &--primary, &.button--load { background: #ffbe0b !important; }
   &--secondary, &.button--local { background: #e1dcbe !important; }
   &--sync { background: #4cc9f0 !important; }
+  &--tux { background: #f4f4f4 !important; }
+
+  &--demo {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 3px solid #000000 !important;
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+  }
 
   &--on-dark {
     background: #ffbe0b !important;
@@ -342,13 +422,14 @@ a { color: #2563eb; text-decoration: none; }
 // ---------------------------------------------
 // Footer
 // ---------------------------------------------
-.site-footer { 
-  padding: 30px 0 50px; 
-  color: #ffffff;
+.site-footer {
+  padding: 30px 0 50px;
+  color: var(--footer-text);
+  transition: color 0.6s ease;
 }
 
 .site-footer .muted {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--footer-muted);
 }
 
 .site-footer__row {
@@ -365,6 +446,120 @@ a { color: #2563eb; text-decoration: none; }
 }
 
 // ---------------------------------------------
+// Scroll reveal
+// ---------------------------------------------
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @for $i from 1 through 4 {
+    &--stagger-#{$i}.is-visible {
+      transition-delay: #{$i * 0.08}s;
+    }
+  }
+}
+
+// ---------------------------------------------
+// Demo video modal
+// ---------------------------------------------
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  &.is-open { display: flex; }
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 10, 30, 0.72);
+  animation: modal-fade 0.2s ease;
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  background: #000000;
+  border: 3px solid #000000;
+  border-radius: 8px;
+  box-shadow: -8px 8px 0px 0px rgba(0, 0, 0, 0.5);
+  animation: modal-pop 0.25s ease;
+  overflow: hidden;
+}
+
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  background: #ffbe0b;
+  color: #000000;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal__video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.modal__placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 24px;
+
+  p { color: #ffffff; }
+  code {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+}
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+// ---------------------------------------------
 // Responsive Queries
 // ---------------------------------------------
 @media (max-width: 860px) {
@@ -377,4 +572,11 @@ a { color: #2563eb; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .button { transition: none; }
+  .reveal { transition: none; }
+  .modal__backdrop, .modal__panel { animation: none; }
+  html, body, .site-header, .site-footer { transition: none; }
+}
+
+@media (max-width: 480px) {
+  .button-row--center { width: 100%; }
 }

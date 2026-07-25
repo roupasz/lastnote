@@ -12,10 +12,16 @@ layout: default
         actually needs them.
       </p>
       <div class="button-row">
-        <a class="button button--primary button--load" href="{{ site.download.mac_url }}">Download for Mac</a>
-        <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Download for Windows</a>
+        <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
+        <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
+        <a class="button button--tux button--local" href="{{ site.download.linux_url }}">Linux</a>
       </div>
-      <p class="fine-print">Version {{ site.download.version }} · {{ site.download.mac_requirement }} · {{ site.download.windows_requirement }}</p>
+      <p class="fine-print">Version {{ site.download.version }} · {{ site.download.mac_requirement }} · {{ site.download.windows_requirement }} · {{ site.download.linux_requirement }}</p>
+      <div class="button-row button-row--center">
+        <button type="button" class="button button--demo" data-modal-open="demo-modal">
+          &#9654;&nbsp; Watch demo
+        </button>
+      </div>
     </div>
 
     <div class="hero__art" aria-hidden="true">
@@ -28,29 +34,29 @@ layout: default
 
 <hr class="divider">
 
-<section id="features" class="features">
+<section id="features" class="features reveal">
   <div class="wrap">
     <p class="eyebrow">Why LastNote</p>
     <div class="features__grid">
-      <div class="feature-card">
+      <div class="feature-card reveal reveal--stagger-1">
         <span class="stamp stamp--muted">Local-first</span>
         <h3>Nothing leaves your machine</h3>
         <p>Everything you write is stored and encrypted on your own device.
           No account required, no server in between.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal reveal--stagger-2">
         <span class="stamp stamp--muted">Organized</span>
         <h3>One place for everything that matters</h3>
         <p>Accounts, instructions, documents, and notes to loved ones — kept
           together instead of scattered across apps and drawers.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal reveal--stagger-3">
         <span class="stamp stamp--muted">Encrypted</span>
         <h3>Locked until it's needed</h3>
         <p>Strong encryption keeps every entry private, opened only with the
           key you choose.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal reveal--stagger-4">
         <span class="stamp stamp--muted">Exportable</span>
         <h3>Yours to keep, in any format</h3>
         <p>Export a printable copy or a portable file at any time — your
@@ -62,23 +68,23 @@ layout: default
 
 <hr class="divider">
 
-<section id="how-it-works" class="how">
+<section id="how-it-works" class="how reveal">
   <div class="wrap">
     <p class="eyebrow">How it works</p>
     <div class="how__grid">
-      <div class="how-step">
+      <div class="how-step reveal reveal--stagger-1">
         <span class="how-step__index">01</span>
         <h3>Write it down</h3>
         <p>Add the accounts, instructions, and notes only you know — in
           plain language, whenever you think of them.</p>
       </div>
-      <div class="how-step">
+      <div class="how-step reveal reveal--stagger-2">
         <span class="how-step__index">02</span>
         <h3>Lock it away</h3>
         <p>LastNote encrypts everything on your device the moment you save
           it. Nothing sits unprotected.</p>
       </div>
-      <div class="how-step">
+      <div class="how-step reveal reveal--stagger-3">
         <span class="how-step__index">03</span>
         <h3>Ready when it's needed</h3>
         <p>Set who can reach your information and how — so it surfaces at
@@ -88,15 +94,27 @@ layout: default
   </div>
 </section>
 
-<section id="download" class="cta">
+<section id="download" class="cta reveal">
   <div class="wrap cta__row">
     <div>
       <h2>Your information, safe until it's needed.</h2>
       <p>Free to download. No account, no subscription.</p>
     </div>
     <div class="button-row">
-      <a class="button button--on-dark button--load" href="{{ site.download.mac_url }}">Download for Mac</a>
-      <a class="button button--outline button--local" href="{{ site.download.windows_url }}">Download for Windows</a>
+      <a class="button button--on-dark button--load" href="{{ site.download.mac_url }}">MacOS</a>
+      <a class="button button--outline button--local" href="{{ site.download.windows_url }}">Windows</a>
+      <a class="button button--outline button--tux" href="{{ site.download.linux_url }}">Linux</a>
     </div>
   </div>
 </section>
+
+<div class="modal" id="demo-modal" aria-hidden="true">
+  <div class="modal__backdrop" data-modal-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-label="LastNote demo video">
+    <button type="button" class="modal__close" data-modal-close aria-label="Close demo video">&times;</button>
+    <div class="modal__video" id="demo-modal-video">
+      <!-- main.js fills this in: an <iframe> if you set DEMO_VIDEO_URL,
+           otherwise a friendly placeholder explaining how to add one -->
+    </div>
+  </div>
+</div>

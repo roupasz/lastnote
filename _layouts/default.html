@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Set the day/night theme before paint, so there's no flash of the wrong colors -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('lastnote-theme'); } catch (e) {}
+      if (saved === 'day' || saved === 'night') {
+        document.documentElement.setAttribute('data-theme', saved);
+        return;
+      }
+      var hour = new Date().getHours();
+      var isNight = hour < 6 || hour >= 19;
+      document.documentElement.setAttribute('data-theme', isNight ? 'night' : 'day');
+    })();
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.title }} — {{ site.tagline }}</title>
   <meta name="description" content="{{ site.description }}">
+
+  <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+  <meta name="theme-color" content="#7B68A6">
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
@@ -19,6 +40,10 @@
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
         <a href="#download" class="site-nav__cta">Download</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between day and night theme">
+          <span class="theme-toggle__icon theme-toggle__icon--sun">&#9728;</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">&#9789;</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -39,5 +64,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 </body>
 </html>
