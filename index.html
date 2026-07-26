@@ -6,17 +6,26 @@ layout: default
   <div class="wrap hero__row">
     <div class="hero__text">
       <span class="stamp">Desktop app</span>
+      <p class="fine-print fine-print--version">Version {{ site.download.version }}</p>
       <p class="hero__lede">
         LastNote holds the things that matter most — accounts, instructions,
         documents, final wishes — locked away until the moment someone
         actually needs them.
       </p>
-      <div class="button-row">
-        <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
-        <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
-        <a class="button button--tux button--local" href="{{ site.download.linux_url }}">Linux</a>
+      <div class="download-group">
+        <div class="download-item">
+          <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
+          <p class="fine-print">{{ site.download.mac_requirement }}</p>
+        </div>
+        <div class="download-item">
+          <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
+          <p class="fine-print">{{ site.download.windows_requirement }}</p>
+        </div>
+        <div class="download-item">
+          <a class="button button--tux button--local" href="{{ site.download.linux_url }}">Linux</a>
+          <p class="fine-print">{{ site.download.linux_requirement }}</p>
+        </div>
       </div>
-      <p class="fine-print">Version {{ site.download.version }} · {{ site.download.mac_requirement }} · {{ site.download.windows_requirement }} · {{ site.download.linux_requirement }}</p>
       <div class="button-row button-row--center">
         <button type="button" class="button button--demo" data-modal-open="demo-modal">
           &#9654;&nbsp; Watch demo
