@@ -23,12 +23,9 @@ $mono:        "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 :root {
   --_gradient-blend-mode: normal;
   // Day: Light pastels over crisp white
-  --bg-gradient: radial-gradient(at 10% 20%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 26% 80%, #e4e3ec 0px, transparent 50%), 
-                 radial-gradient(at 42% 20%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 58% 80%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 74% 20%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 90% 80%, #ece7ec 0px, transparent 50%);
+  --bg-gradient: radial-gradient(at 10% 20%, #f2dfe4 0px, transparent 50%), 
+                 radial-gradient(at 50% 80%, #7b589e 0px, transparent 50%), 
+                 radial-gradient(at 90% 20%, #f2dfe4 0px, transparent 50%);
 
   --bg-start:      #fff; 
   // --header-bg:     rgba(255, 255, 255, 0.85); 
@@ -46,12 +43,9 @@ $mono:        "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 html[data-theme="night"] {
   --_gradient-blend-mode: normal;
   // Night: Deep, rich tones (e.g., dark indigos/purples) over true black
-  --bg-gradient: radial-gradient(at 10% 20%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 26% 80%, #e4e3ec 0px, transparent 50%), 
-                 radial-gradient(at 42% 20%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 58% 80%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 74% 20%, #c2b2e0 0px, transparent 50%), 
-                 radial-gradient(at 90% 80%, #ece7ec 0px, transparent 50%);
+  --bg-gradient: radial-gradient(at 10% 20%, #7b589e 0px, transparent 50%), 
+                 radial-gradient(at 50% 80%, #f2dfe4 0px, transparent 50%), 
+                 radial-gradient(at 90% 20%, #7b589e 0px, transparent 50%);
 
   --bg-start:      #000; 
   // --header-bg:     rgba(123, 104, 166, 0.92); 
