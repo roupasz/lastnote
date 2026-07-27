@@ -56,8 +56,18 @@ function initThemeToggle() {
     if (meta) meta.setAttribute("content", themeColors[theme] || themeColors.day);
   }
 
-  // Sync the theme-color meta tag with whatever theme the head script set.
-  applyMetaColor(html.getAttribute("data-theme") || "day");
+  // Check localStorage first, otherwise fallback to time-based check (e.g., night after 19:00)
+  var savedTheme;
+  try { savedTheme = localStorage.getItem("lastnote-theme"); } catch (e) {}
+
+  if (!savedTheme) {
+    var currentHour = new Date().getHours();
+    // Night mode if before 6 AM or after 19:00 (7 PM)
+    savedTheme = (currentHour < 6 || currentHour >= 19) ? "night" : "day";
+  }
+
+  html.setAttribute("data-theme", savedTheme);
+  applyMetaColor(savedTheme);
 
   toggle.addEventListener("click", function () {
     var current = html.getAttribute("data-theme") === "night" ? "night" : "day";
