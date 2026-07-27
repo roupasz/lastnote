@@ -4,21 +4,21 @@ description: >-
   LastNote is a desktop app for keeping the information that matters most —
   passwords, instructions, accounts, documents — safe, organized, and ready
   for the moment someone actually needs it.
-email: "hello@example.com"
+email: "roupasz@gmail.com"
 
 # GitHub Pages settings — change url/baseurl to match your repo
-url: "https://yourusername.github.io"
+url: "https://roupasz.github.io"
 baseurl: "/lastnote"
 
 # --- Edit these to point at your real releases ---
 download:
-  version: "1.0"
+  version: "2.0.0"
   mac_url: "#"
   mac_requirement: "macOS 13 or later"
   windows_url: "#"
   windows_requirement: "Windows 10 or later"
   linux_url: "#"
-  linux_requirement: "Linux (AppImage)"
+  linux_requirement: "Linux (Debian/Ubuntu)"
 
 markdown: kramdown
 sass:

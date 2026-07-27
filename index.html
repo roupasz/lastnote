@@ -5,28 +5,45 @@ layout: default
 <section class="hero">
   <div class="wrap hero__row">
     <div class="hero__text">
-      <span class="stamp">Desktop app</span>
+      <div class="stamp-wrapper">
+        <span class="stamp">Desktop app</span>
+        <span class="version-tag">Version {{ site.download.version }}</span>
+      </div>
       <p class="hero__lede">
         LastNote holds the things that matter most — accounts, instructions,
         documents, final wishes — locked away until the moment someone
         actually needs them.
       </p>
-      <div class="button-row">
-        <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
-        <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
-        <a class="button button--tux button--local" href="{{ site.download.linux_url }}">Linux</a>
+      
+      <!-- OS Download Grid with aligned requirements -->
+      <div class="download-grid">
+        <div class="download-item">
+          <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
+          <span class="fine-print">{{ site.download.mac_requirement }}</span>
+        </div>
+        <div class="download-item">
+          <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
+          <span class="fine-print">{{ site.download.windows_requirement }}</span>
+        </div>
+        <div class="download-item">
+          <a class="button button--tux button--local" href="{{ site.download.linux_url }}">Linux</a>
+          <span class="fine-print">{{ site.download.linux_requirement }}</span>
+        </div>
       </div>
-      <p class="fine-print">Version {{ site.download.version }} · {{ site.download.mac_requirement }} · {{ site.download.windows_requirement }} · {{ site.download.linux_requirement }}</p>
+
       <div class="button-row button-row--center">
         <button type="button" class="button button--demo" data-modal-open="demo-modal">
-          &#9654;&nbsp; Watch demo
+          &#9654;&nbsp; Watch Demo
         </button>
+        <a class="button button--demo button--gitlab" href="https://gitlab.com/your-username/lastnote/blob/main/README.md" target="_blank" rel="noopener noreferrer">
+          &#9881;&nbsp; User Manual
+        </a>
       </div>
     </div>
 
     <div class="hero__art" aria-hidden="true">
       <div class="app-screenshot-frame">
-        <img src="{{ '/assets/images/keyholder_decrypt_vault.gif' | relative_url }}" alt="LastNote App Interface" class="app-screenshot">
+        <img src="{{ '/assets/images/preview.png' | relative_url }}" alt="LastNote App Interface" class="app-screenshot">
       </div>
     </div>
   </div>
