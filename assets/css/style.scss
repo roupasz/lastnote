@@ -175,7 +175,7 @@ html[data-theme="night"] {
   font-family: $body;
   font-weight: 900;
   font-size: 1.8rem; 
-  color: $accent-title !important;
+  color: $accent-title;
   text-decoration: none;
   text-shadow: -1px 1px 0px #333, -2px 2px 0px #333;
 
@@ -292,7 +292,7 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
   &--tux { background: #4cc9f0; }
 
   &--demo {
-    background: transparent;
+    background: #b19cd9;
     box-shadow: none;
     border: 3px solid #000000;
     padding: 8px 18px;
@@ -300,6 +300,7 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
   }
 
   &--gitlab {
+    background: #7ED8D1;
     display: inline-flex;
     align-items: center;
     gap: 6px;
