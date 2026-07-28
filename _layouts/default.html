@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Clean the hash from the URL on load/reload without jumping or reloading again
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash) {
+        // Temporarily remember where we were supposed to scroll
+        const hash = window.location.hash;
+        
+        // Use history.replaceState to remove the hash from the URL bar immediately
+        window.history.replaceState('', document.title, window.location.pathname + window.location.search);
+        
+        // Smoothly scroll to that section on initial click-through
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }, 50);
+        }
+      }
+    });
+  </script>
   <!-- Set the day/night theme before paint, so there's no flash of the wrong colors -->
   <script>
     (function () {
@@ -38,7 +58,7 @@
       </a>
       <nav class="site-nav">
         <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
+        <a href="#how-it-works">How it Works</a>
         <a href="#download" class="site-nav__cta">Download</a>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between day and night theme">
           <span class="theme-toggle__icon theme-toggle__icon--sun">&#9728;</span>

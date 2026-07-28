@@ -8,7 +8,24 @@ document.addEventListener("DOMContentLoaded", function () {
   initScrollReveal();
   initThemeToggle();
   initDemoModal();
+  initForceScrollTop();
 });
+
+// -----------------------------------------------------------------------
+// 0) Always land at the top of the page on load/reload, regardless of any
+//    #hash in the URL. The browser resolves which element to scroll to
+//    very early in navigation (before any of our scripts run), so we can't
+//    prevent that scroll, only correct it afterward. Two animation frames
+//    reliably puts us after the browser's own scroll-to-fragment step,
+//    which a single 'load' listener can race and lose.
+// -----------------------------------------------------------------------
+function initForceScrollTop() {
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      window.scrollTo(0, 0);
+    });
+  });
+}
 
 // -----------------------------------------------------------------------
 // 1) Scroll reveal — sections/cards fade + slide in the first time they
