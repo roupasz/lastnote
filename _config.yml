@@ -4,8 +4,8 @@ description: >-
   LastNote holds the things that matter most, accounts, instructions,
   documents, locked away until the moment someone
   actually needs them.
-email: "roupasz@gmail.com"
-demo_video_url: ""
+email: "info@example.com"
+demo_video_url: "./assets/images/keyholder_decrypt_vault.gif"
 
 # GitHub Pages settings — change url/baseurl to match your repo
 url: "https://roupasz.github.io"
