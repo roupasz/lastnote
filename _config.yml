@@ -19,7 +19,7 @@ download:
   windows_url: "#"
   windows_requirement: "Windows 10 or later"
   linux_url: "#"
-  linux_requirement: "Linux (Debian/Ubuntu)"
+  linux_requirement: "Debian/Ubuntu"
 
 markdown: kramdown
 sass:

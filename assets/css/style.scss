@@ -288,8 +288,8 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
 
   &--primary, &.button--load { background: #ffbe0b; }
   &--secondary, &.button--local { background: #e1dcbe; }
-  &--sync { background: #4cc9f0; }
-  &--tux { background: #f4f4f4; }
+  &--sync { background: #f4f4f4; }
+  &--tux { background: #4cc9f0; }
 
   &--demo {
     background: transparent;
@@ -499,7 +499,7 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
 .site-footer__contact a {
   font-family: $mono;
   font-size: 0.95rem;
-  color: $accent-title;
+  color: var(--footer-text);
 }
 
 // ---------------------------------------------

@@ -10,27 +10,11 @@ layout: default
         <span class="version-tag">Version {{ site.download.version }}</span>
       </div>
       <p class="hero__lede">
-        LastNote holds the things that matter most — accounts, instructions,
-        documents, final wishes — locked away until the moment someone
+        LastNote holds the things that matter most, accounts, instructions,
+        documents, locked away until the moment someone
         actually needs them.
       </p>
       
-      <!-- OS Download Grid with aligned requirements -->
-      <div class="download-grid">
-        <div class="download-item">
-          <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
-          <span class="fine-print">{{ site.download.mac_requirement }}</span>
-        </div>
-        <div class="download-item">
-          <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
-          <span class="fine-print">{{ site.download.windows_requirement }}</span>
-        </div>
-        <div class="download-item">
-          <a class="button button--tux button--local" href="{{ site.download.linux_url }}">Linux</a>
-          <span class="fine-print">{{ site.download.linux_requirement }}</span>
-        </div>
-      </div>
-
       <div class="button-row button-row--center">
         <button type="button" class="button button--demo" data-modal-open="demo-modal" data-video-url="{{ site.demo_video_url }}">
           &#9654;&nbsp; Watch Demo
@@ -56,7 +40,7 @@ layout: default
     <p class="eyebrow">Why LastNote</p>
     <div class="features__grid">
       <div class="feature-card reveal reveal--stagger-1">
-        <span class="stamp stamp--muted">Local-first</span>
+        <span class="stamp stamp--muted">Local</span>
         <h3>Nothing leaves your machine</h3>
         <p>Everything you write is stored and encrypted on your own device.
           No account required, no server in between.</p>
@@ -117,11 +101,21 @@ layout: default
       <h2>Your information, safe until it's needed.</h2>
       <p>Free to download. No account, no subscription.</p>
     </div>
-    <div class="button-row">
-      <a class="button button--on-dark button--load" href="{{ site.download.mac_url }}">MacOS</a>
-      <a class="button button--outline button--local" href="{{ site.download.windows_url }}">Windows</a>
-      <a class="button button--outline button--tux" href="{{ site.download.linux_url }}">Linux</a>
-    </div>
+      <!-- OS Download Grid with aligned requirements -->
+      <div class="download-grid">
+        <div class="download-item">
+          <a class="button button--primary button--load" href="{{ site.download.mac_url }}">MacOS</a>
+          <span class="fine-print">{{ site.download.mac_requirement }}</span>
+        </div>
+        <div class="download-item">
+          <a class="button button--secondary button--local" href="{{ site.download.windows_url }}">Windows</a>
+          <span class="fine-print">{{ site.download.windows_requirement }}</span>
+        </div>
+        <div class="download-item">
+          <a class="button button--tux button--tux" href="{{ site.download.linux_url }}">Linux</a>
+          <span class="fine-print">{{ site.download.linux_requirement }}</span>
+        </div>
+      </div>
   </div>
 </section>
 
