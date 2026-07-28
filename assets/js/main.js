@@ -3,7 +3,6 @@
 // empty to show a placeholder reminding you to add one).
 // e.g. "https://www.youtube.com/embed/VIDEO_ID"
 // -----------------------------------------------------------------------
-var DEMO_VIDEO_URL = "";
 
 document.addEventListener("DOMContentLoaded", function () {
   initScrollReveal();
@@ -90,7 +89,9 @@ function initDemoModal() {
   openButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
       var modal = document.getElementById(btn.getAttribute("data-modal-open"));
-      if (modal) openModal(modal);
+      // Grab the video URL dynamically from the clicked button's data attribute
+      var demoVideoUrl = btn.getAttribute("data-video-url");
+      if (modal) openModal(modal, demoVideoUrl);
     });
   });
 
@@ -107,22 +108,23 @@ function initDemoModal() {
     }
   });
 
-  function openModal(modal) {
+  function openModal(modal, videoUrl) {
     lastFocused = document.activeElement;
 
     var videoHost = modal.querySelector(".modal__video");
     if (videoHost) {
-      if (DEMO_VIDEO_URL) {
+      // Check if the URL exists and isn't just an empty string or placeholder
+      if (videoUrl && videoUrl.trim() !== "") {
         videoHost.innerHTML =
-          '<iframe src="' + DEMO_VIDEO_URL + '" title="LastNote demo" ' +
+          '<iframe src="' + videoUrl + '" title="LastNote demo" ' +
           'frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" ' +
           'allowfullscreen></iframe>';
       } else {
         videoHost.innerHTML =
           '<div class="modal__placeholder">' +
           '<p><strong>No demo video set yet.</strong></p>' +
-          '<p>Add your video URL to <code>DEMO_VIDEO_URL</code> in ' +
-          '<code>assets/js/main.js</code>.</p>' +
+          '<p>Add your video URL to <code>demo_video_url</code> in ' +
+          '<code>_config.yml</code>.</p>' +
           "</div>";
       }
     }
