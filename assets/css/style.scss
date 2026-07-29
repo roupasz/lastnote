@@ -151,6 +151,12 @@ html[data-theme="night"] {
   color: var(--nav-text);
 }
 
+.site-header {
+  position: relative;
+  z-index: 50; // keeps header + its dropdown above .hero/.features/etc,
+               // which each form their own stacking context via backdrop-filter
+}
+
 .site-header__row {
   display: flex;
   align-items: center;
