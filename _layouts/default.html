@@ -47,7 +47,13 @@
         <span class="wordmark">LastNote</span>
         <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="LastNote Logo" class="site-logo">
       </a>
-      <nav class="site-nav">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it Works</a>
         <a href="#download" class="site-nav__cta">Download</a>

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initThemeToggle();
   initDemoModal();
   initSmoothAnchors();
+  initMobileNav();
 });
 
 initForceScrollTop();
@@ -167,6 +168,56 @@ function initDemoModal() {
     if (videoHost) videoHost.innerHTML = ""; // stop playback
     if (lastFocused) lastFocused.focus();
   }
+}
+
+// -----------------------------------------------------------------------
+// 4) Mobile hamburger nav — toggles the dropdown panel, closes on link
+//    click, outside click, or Escape.
+// -----------------------------------------------------------------------
+function initMobileNav() {
+  var toggle = document.getElementById("nav-toggle");
+  var nav = document.getElementById("site-nav");
+  if (!toggle || !nav) return;
+
+  function closeNav() {
+    nav.classList.remove("is-open");
+    toggle.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  function openNav() {
+    nav.classList.add("is-open");
+    toggle.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+  }
+
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var isOpen = nav.classList.contains("is-open");
+    if (isOpen) closeNav(); else openNav();
+  });
+
+  // Close after picking a link (so it doesn't stay open once you navigate)
+  nav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", closeNav);
+  });
+
+  // Close on outside click
+  document.addEventListener("click", function (e) {
+    if (!nav.classList.contains("is-open")) return;
+    if (nav.contains(e.target) || toggle.contains(e.target)) return;
+    closeNav();
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && nav.classList.contains("is-open")) closeNav();
+  });
+
+  // Close automatically if the viewport is resized back to desktop width
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 640 && nav.classList.contains("is-open")) closeNav();
+  });
 }
 
 function initSmoothAnchors() {
