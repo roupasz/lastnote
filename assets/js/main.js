@@ -11,6 +11,27 @@ document.addEventListener("DOMContentLoaded", function () {
   initSmoothAnchors();
 });
 
+initForceScrollTop();
+
+// -----------------------------------------------------------------------
+// 0) Always land at the top of the page on load/reload, regardless of any
+//    #hash in the URL. The browser can resolve/perform its own scroll to
+//    a matching section anywhere up through full page load (e.g. once the
+//    logo image finishes loading and shifts layout) — tying this to
+//    DOMContentLoaded fires too early and can lose that race. Waiting for
+//    the full 'load' event, then two animation frames on top, reliably
+//    puts our correction after the browser's own scroll-to-fragment step.
+// -----------------------------------------------------------------------
+function initForceScrollTop() {
+  window.addEventListener("load", function () {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        window.scrollTo(0, 0);
+      });
+    });
+  });
+}
+
 // -----------------------------------------------------------------------
 // 1) Scroll reveal — sections/cards fade + slide in the first time they
 //    enter the viewport. Respects prefers-reduced-motion.
@@ -56,9 +77,10 @@ function initThemeToggle() {
     if (meta) meta.setAttribute("content", themeColors[theme] || themeColors.day);
   }
 
-  // Check localStorage first, otherwise fallback to time-based check (e.g., night after 19:00)
+  // Check sessionStorage first (this tab's manual override, if any),
+  // otherwise fall back to time-based check (e.g., night after 19:00)
   var savedTheme;
-  try { savedTheme = localStorage.getItem("lastnote-theme"); } catch (e) {}
+  try { savedTheme = sessionStorage.getItem("lastnote-theme"); } catch (e) {}
 
   if (!savedTheme) {
     var currentHour = new Date().getHours();
@@ -74,7 +96,7 @@ function initThemeToggle() {
     var next = current === "night" ? "day" : "night";
     html.setAttribute("data-theme", next);
     applyMetaColor(next);
-    try { localStorage.setItem("lastnote-theme", next); } catch (e) {}
+    try { sessionStorage.setItem("lastnote-theme", next); } catch (e) {}
   });
 }
 
