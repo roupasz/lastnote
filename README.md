@@ -4,7 +4,7 @@ A one-page Jekyll site for LastNote, in the spirit of naturarum's app page:
 quiet paper background, a serif headline, and a single accent color used
 sparingly.
 
-## Design notes
+## Design notes.
 
 - **Colors:** warm paper (`#EDEBE6`), warm-graphite ink (`#23262B`), and one
   accent — a wax-seal oxblood (`#7A2430`) — used only for the "stamp" tags,
