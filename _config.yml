@@ -7,6 +7,11 @@ description: >-
 email: "info@example.com"
 demo_video_url: "./assets/images/keyholder_decrypt_vault.gif"
 
+# --- Analytics: only loads on the production build (e.g. GitHub Pages),
+# and only after the visitor accepts the consent banner ---
+analytics:
+  ga_measurement_id: "G-3VC9ZJ9BQT"
+
 # GitHub Pages settings — change url/baseurl to match your repo
 url: "https://zoisroupas.dev"
 baseurl: "/lastnote"
