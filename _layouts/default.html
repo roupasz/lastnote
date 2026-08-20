@@ -82,6 +82,21 @@
     </div>
   </footer>
 
+  {% if jekyll.environment == "production" and site.analytics.ga_measurement_id %}
+  <div class="consent-banner" id="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <p>
+      We use Google Analytics to understand website traffic and improve your experience. We respect your privacy, so no analytics cookies are set until you consent.
+    </p>
+    <div class="consent-banner__actions">
+      <button type="button" class="button button--secondary" id="consent-decline">Decline</button>
+      <button type="button" class="button button--primary" id="consent-accept">Accept</button>
+    </div>
+  </div>
+  <script>
+    window.LASTNOTE_GA_ID = "{{ site.analytics.ga_measurement_id }}";
+  </script>
+  {% endif %}
+
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 </body>
 </html>

@@ -696,6 +696,51 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
 }
 
 // ---------------------------------------------
+// Analytics consent banner
+// ---------------------------------------------
+.consent-banner {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: -200px; // hidden below the viewport until .is-visible
+  z-index: 200;
+  max-width: 640px;
+  margin: 0 auto;
+  background: $paper-alt;
+  border: 3px solid #000000;
+  border-radius: 4px 11px 4px 11px / 11px 4px 11px 4px;
+  box-shadow: -6px 6px 0px 0px #000000;
+  padding: 18px 22px;
+  transition: bottom 0.35s ease;
+
+  &.is-visible { bottom: 20px; }
+
+  p {
+    margin: 0 0 14px;
+    font-size: 0.9rem;
+    color: $ink;
+  }
+}
+
+.consent-banner__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+
+  .button {
+    font-size: 13px;
+    padding: 8px 16px;
+    box-shadow: -3px 3px 0px 0px #000000;
+  }
+}
+
+@media (max-width: 480px) {
+  .consent-banner { left: 12px; right: 12px; padding: 16px; }
+  .consent-banner__actions { justify-content: stretch; }
+  .consent-banner__actions .button { flex: 1; }
+}
+
+// ---------------------------------------------
 // Responsive Queries
 // ---------------------------------------------
 @media (max-width: 860px) {
@@ -756,6 +801,7 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
   .reveal { transition: none; }
   .modal__backdrop, .modal__panel { animation: none; }
   html, body, .site-footer { transition: none; }
+  .consent-banner { transition: none; }
 }
 
 @media (max-width: 480px) {

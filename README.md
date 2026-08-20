@@ -1,20 +1,27 @@
-# LastNote site
+# [LastNote](https://zoisroupas.dev/lastnote/)
 
-A one-page Jekyll site for LastNote, in the spirit of naturarum's app page:
-quiet paper background, a serif headline, and a single accent color used
-sparingly.
+<kbd><img src="assets/images/preview.png" /></kbd>
+
+<p align="center">
+  <a href="https://gitlab.com/paparoup/lastnote">
+    <img src="https://img.shields.io/badge/GitLab-Releases-orange?logo=gitlab" alt="GitLab">
+  </a>
+  <a href="https://jekyllrb.com/">
+    <img src="https://img.shields.io/badge/Built_with-Jekyll-red?logo=jekyll" alt="Built with Jekyll">
+  </a>
+</p>
+
+A responsive, single-page Jekyll landing page for **LastNote**, a desktop application which encrypts and stores locally all the important notes, instructions, accounts and any other information that can be then securely shared with your loved ones.
+
+Styled with a high-contrast editorial aesthetic, dynamic day/night modes, tactile postmark accents, and no external CSS frameworks.
 
 ## Design notes.
 
-- **Colors:** warm paper (`#EDEBE6`), warm-graphite ink (`#23262B`), and one
-  accent — a wax-seal oxblood (`#7A2430`) — used only for the "stamp" tags,
-  links, and hover states.
-- **Type:** Fraunces for headlines, Inter for body text, IBM Plex Mono for
-  small uppercase labels ("stamps") and the version/fine-print line.
-- **Signature element:** the rotated `.stamp` tags (e.g. "Desktop app",
-  "Encrypted") — a nod to a postmark or wax seal, tying back to the idea of
-  something sealed until it's needed.
-- Everything is hand-written HTML/Sass, no framework — easy to prune.
+* **High-Contrast Editorial Aesthetic:** Strong tactile borders, offset hard drop-shadows, bold typography (`Impact`/`Arial Black` accents), and postmark-style stamp tags.
+* **Dynamic Day / Night Themes:** Automatically adapts based on the visitor's local time (Night mode active between 19:00 and 06:00) with a persistent manual toggle (`sessionStorage`).
+* **Interactive Elements:** Smooth anchor scrolling, scroll-reveal card animations via `IntersectionObserver`, mobile-responsive navigation drawer, and an embedded demo modal.
+* **Privacy & Analytics:** GDPR-compliant Google Analytics (GA4) integration that only triggers upon explicit visitor consent via an interactive banner.
+* **Handwritten Sass:** Clean, modular SCSS without reliance on heavy frontend frameworks like Bootstrap or Tailwind.
 
 ## Run it locally
 
@@ -23,9 +30,11 @@ You'll need Ruby and Bundler installed.
 ```bash
 bundle install
 bundle exec jekyll serve
-```
 
-Then open http://localhost:4000.
+# To test production-only features (e.g., GDPR banner) locally:
+JEKYLL_ENV=production bundle exec jekyll serve 
+```
+Then open http://127.0.0.1:4000/lastnote/.
 
 ## What to edit first
 
@@ -52,9 +61,6 @@ Then open http://localhost:4000.
 4. Push — GitHub Pages builds Jekyll sites automatically, no local build
    needed.
 
-## Note
+## License
 
-This site was hand-written rather than built and tested with a live Jekyll
-server (no Ruby/gem access in the environment it was created in), so do a
-`bundle exec jekyll serve` pass before publishing to catch anything that
-needs a tweak.
+[MIT](./LICENSE.md)

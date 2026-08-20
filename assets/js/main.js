@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initDemoModal();
   initSmoothAnchors();
   initMobileNav();
+  initAnalyticsConsent();
 });
 
 initForceScrollTop();
@@ -235,4 +236,70 @@ function initSmoothAnchors() {
       }
     });
   });
+}
+
+// -----------------------------------------------------------------------
+// 6) Analytics consent banner — Google Analytics (GA4) is never requested
+//    from Google's servers, and no cookie is set, until the visitor clicks
+//    "Accept". Declining (or ignoring the banner) means nothing loads.
+//    Only present at all on the production build (see default.html) and
+//    when window.LASTNOTE_GA_ID is set from _config.yml.
+//
+//    Uses localStorage (not sessionStorage like the theme toggle) on
+//    purpose — a consent decision should persist across browser sessions,
+//    not reset every new tab.
+// -----------------------------------------------------------------------
+function initAnalyticsConsent() {
+  var banner = document.getElementById("consent-banner");
+  var gaId = window.LASTNOTE_GA_ID;
+  if (!banner || !gaId) return;
+
+  var STORAGE_KEY = "lastnote-analytics-consent"; // "granted" | "denied"
+  var stored = null;
+  try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+  if (stored === "granted") {
+    loadGoogleAnalytics(gaId);
+    return; // decision already made, no need to show the banner again
+  }
+  if (stored === "denied") {
+    return; // decision already made, nothing to load, nothing to show
+  }
+
+  // No prior decision — show the banner and wait.
+  banner.classList.add("is-visible");
+
+  var acceptBtn = document.getElementById("consent-accept");
+  var declineBtn = document.getElementById("consent-decline");
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener("click", function () {
+      try { localStorage.setItem(STORAGE_KEY, "granted"); } catch (e) {}
+      loadGoogleAnalytics(gaId);
+      banner.classList.remove("is-visible");
+    });
+  }
+
+  if (declineBtn) {
+    declineBtn.addEventListener("click", function () {
+      try { localStorage.setItem(STORAGE_KEY, "denied"); } catch (e) {}
+      banner.classList.remove("is-visible");
+    });
+  }
+}
+
+function loadGoogleAnalytics(gaId) {
+  if (window.__lastnoteGaLoaded) return; // avoid double-loading
+  window.__lastnoteGaLoaded = true;
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag("js", new Date());
+  gtag("config", gaId);
+
+  var script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+  document.head.appendChild(script);
 }
