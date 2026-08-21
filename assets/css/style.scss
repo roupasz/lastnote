@@ -390,26 +390,6 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
   display: block;
 }
 
-// Stamp & Version layout
-.stamp-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  margin-bottom: 20px;
-
-  .stamp {
-    margin-bottom: 0; // overrides individual margin
-  }
-}
-
-.version-tag {
-  font-family: $mono;
-  font-size: 0.78rem;
-  color: $ink-soft;
-  font-weight: 600;
-}
-
 // OS Download Buttons Grid
 .download-grid {
   display: grid;

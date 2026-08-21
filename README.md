@@ -40,7 +40,7 @@ Then open http://127.0.0.1:4000/lastnote/.
 
 1. **`_config.yml`** — set `url`, `baseurl`, `email`, and the real
    `download.mac_url` / `download.windows_url` links (currently `#`
-   placeholders), plus version and OS requirements.
+   placeholders), plus OS requirements.
 2. **`index.html`** — the feature cards and "how it works" steps are
    written generically (local-first, encrypted, organized, exportable).
    Swap in your app's actual features and copy.

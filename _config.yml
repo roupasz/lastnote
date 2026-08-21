@@ -18,12 +18,11 @@ baseurl: "/lastnote"
 
 # --- Edit these to point at your real releases ---
 download:
-  version: "2.0.0"
-  mac_url: "#"
+  mac_url: "https://gitlab.com/paparoup/lastnote/-/releases/permalink/latest"
   mac_requirement: "macOS 13 or later"
-  windows_url: "#"
+  windows_url: "https://gitlab.com/paparoup/lastnote/-/releases/permalink/latest"
   windows_requirement: "Windows 10 or later"
-  linux_url: "#"
+  linux_url: "https://gitlab.com/paparoup/lastnote/-/releases/permalink/latest"
   linux_requirement: "Debian/Ubuntu"
 
 markdown: kramdown
