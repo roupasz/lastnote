@@ -3,7 +3,7 @@
 <kbd><img src="assets/images/preview.png" /></kbd>
 
 <p align="center">
-  <a href="https://gitlab.com/paparoup/lastnote">
+  <a href="https://gitlab.com/paparoup/lastnote/-/releases">
     <img src="https://img.shields.io/badge/GitLab-Releases-orange?logo=gitlab" alt="GitLab">
   </a>
   <a href="https://jekyllrb.com/">
