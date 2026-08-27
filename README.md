@@ -2,7 +2,7 @@
 
 A one-page Jekyll site for LastNote, in the spirit of naturarum's app page:
 quiet paper background, a serif headline, and a single accent color used
-sparingly.
+sparingly..
 
 ## Design notes
 
