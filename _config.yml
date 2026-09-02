@@ -23,7 +23,9 @@ download:
   windows_url: "https://gitlab.com/paparoup/lastnote/-/releases/permalink/latest"
   windows_requirement: "Windows 10 or later"
   linux_url: "https://gitlab.com/paparoup/lastnote/-/releases/permalink/latest"
-  linux_requirement: "Debian/Ubuntu"
+  linux_requirement: "Supported Distributions"
+  linux_requirement_url: "https://gitlab.com/paparoup/lastnote/-/blob/main/README.md?ref_type=heads#supported-distributions"
+  
 
 markdown: kramdown
 sass:

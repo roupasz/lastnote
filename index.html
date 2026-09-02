@@ -113,7 +113,11 @@ layout: default
         </div>
         <div class="download-item">
           <a class="button button--tux button--tux" href="{{ site.download.linux_url }}">Linux</a>
-          <span class="fine-print">{{ site.download.linux_requirement }}</span>
+          <span class="fine-print">
+            <a href="{{ site.download.linux_requirement_url }}" target="_blank" rel="noopener noreferrer">
+              {{ site.download.linux_requirement }}
+            </a>
+          </span>
         </div>
       </div>
     <div class="cta__logo-container">

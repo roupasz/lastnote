@@ -371,6 +371,16 @@ html[data-theme="night"] .theme-toggle__icon--moon { display: inline; }
   margin: 0;
 }
 
+.fine-print a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 2px;
+}
+.fine-print a:hover {
+  opacity: 0.75;
+}
+
 // ---------------------------------------------
 // App Screenshot Preview Frame (Replaces CSS mock window)
 // ---------------------------------------------
