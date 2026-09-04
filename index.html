@@ -66,8 +66,6 @@ layout: default
   </div>
 </section>
 
-<hr class="divider">
-
 <section id="how-it-works" class="how reveal">
   <div class="wrap">
     <p class="eyebrow">How It Works</p>
@@ -90,6 +88,32 @@ layout: default
         <p>Decide who can reach your information and how, so it surfaces at
           the right moment.</p>
       </div>
+    </div>
+
+    <p class="eyebrow demos-eyebrow">See it in action</p>
+    <div class="demos__grid">
+
+      <button type="button" class="demo-tile" data-modal-open="demo-modal"  data-video-url="/lastnote/assets/images/keyholder_decrypt_vault.gif">
+              <!-- data-video-url="{{ site.demo_video_url }}"> -->
+        <img src="{{ '/assets/images/keyholder_decrypt_vault.gif' | relative_url }}" alt="Unlocking a vault entry as Keyholder">
+        <span class="demo-tile__label">Unlocking a Vault</span>
+      </button>
+
+      <button type="button" class="demo-tile" data-modal-open="demo-modal" data-video-url="/lastnote/assets/images/creator_create_vault.gif">
+        <img src="{{ '/assets/images/creator_create_vault.gif' | relative_url }}" alt="Writing a new note">
+        <span class="demo-tile__label">Creating a Vault</span>
+      </button>
+
+      <button type="button" class="demo-tile" data-modal-open="demo-modal" data-video-url="/lastnote/assets/images/creator_decrypt_vault.gif">
+        <img src="{{ '/assets/images/creator_decrypt_vault.gif' | relative_url }}" alt="Unlock & Edit a vault entry as Owner">
+        <span class="demo-tile__label">Editing a Vault</span>
+      </button>
+
+      <button type="button" class="demo-tile" data-modal-open="demo-modal" data-video-url="/lastnote/assets/images/creator_sync.gif">
+        <img src="{{ '/assets/images/creator_sync.gif' | relative_url }}" alt="Syncing to Git">
+        <span class="demo-tile__label">Syncing a Vault</span>
+      </button>
+
     </div>
   </div>
 </section>

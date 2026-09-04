@@ -5,7 +5,7 @@ description: >-
   documents, locked away until the moment someone
   actually needs them.
 email: "info@example.com"
-demo_video_url: "./assets/images/keyholder_decrypt_vault.gif"
+demo_video_url: "https://www.youtube.com/embed/ewhvwjyiotU"
 
 # --- Analytics: only loads on the production build (e.g. GitHub Pages),
 # and only after the visitor accepts the consent banner ---
